@@ -46,7 +46,6 @@ function findInArray(arr, property, val){
     }
 }
 
-
 function pDistance( x1, y1, x2, y2, x, y) {
 
     var A = x - x1;

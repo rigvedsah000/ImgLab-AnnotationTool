@@ -35,7 +35,10 @@ function saveAsNimn(){
     askFileName(Object.keys(labellingData).length + ".nimn", function(fileName){
         analytics_reportExportType("nimn");
         report_UniqueCategories();
-        download( nimn.stringify(nimnSchema, labellingData), fileName, "application/nimn");
+        console.log("Saving Data")
+        console.log(labellingData)
+        download(nimn.stringify(nimnSchema, labellingData), fileName, "application/nimn");
+        console.log(nimn.stringify(nimnSchema, labellingData))
         //download( JSON.stringify(labellingData), fileName, "application/json");
     });
 }

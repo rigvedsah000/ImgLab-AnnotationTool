@@ -51,7 +51,10 @@ var loadJSONFile = function(data){
 }
 
 var loadProjectFile = function(data){
+    console.log(data)
     labellingData = nimn.parse(nimnSchema, data);
+    console.log("Opening Data")
+    console.log(labellingData)
     //labellingData =  JSON.parse(data);
 }
 

@@ -187,6 +187,6 @@ var suggestedCategories = ["bengali", "devanagari", "gujarati",  "gurumukhi", "k
 var suggestedTags = [];
 
 var suggestedAttributes = {
-    "gender" : ["male", "female", "other"],
-    "color" : ["red", "green", "blue", "orange", "yellow", "white", "black"],
+    "structure" : ["regular", "irregular"],
+    "language" : ["assamese", "bengali", "bodo", "dogri", "gujarati", "hindi", "kannada", "kashmiri", "konkani", "maithili", "malayalam", "manipuri", "marathi", "nepali", "odia", "punjabi", "sanskrit", "santali", "sindhi", "tamil", "telugu", "urdu"]
 };

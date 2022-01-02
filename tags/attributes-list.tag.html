@@ -1,4 +1,5 @@
 <attributes-list>
+
     <style>
         .attribute-name{
             width: 30%;
@@ -15,7 +16,11 @@
             padding: 1px;
         }
     </style>
+    
     <div class="clearfix">Attributes<button class="btn btn-sm float-right" onclick={addAttributeRow}>+</button></div>
+
+    {addDefaultAttributes()}
+    
     <div id="attributes-list">
         <div id="attribute-row_{index}" class="form-inline" style="margin-top:3px;" each={ attribute,index in opts.attributes } >
             <div class="attribute-name">
@@ -29,8 +34,36 @@
             </div>
         </div>
     </div>
+    
     <script>
         var thisTag = this;
+
+        this.addDefaultAttributes = function(){
+
+            // Add attribute title "language" if it is not present
+            var present = findInArray(opts.attributes, "label", "language");
+            if(!present){
+                opts.attributes.push({
+                    label : "language",
+                    value :  ""
+                })
+            }
+
+            // var language = findInArray(this.parent.targetShape.attributes, 'label', 'language')
+            // console.log(language)
+
+            // Add attribute title "structure" if it is not present
+            present = findInArray(opts.attributes, "label", "structure");
+            if(!present){  
+                opts.attributes.push({
+                    label : "structure",
+                    value : ""
+                })
+            }
+
+            // var structure = findInArray(this.parent.targetShape.attributes, 'label', 'structure')
+            // console.log(structure ? structure['value'] : "")
+        }
 
         //can be called on oninput event
         this.updateAttributeName = function(e){
@@ -90,5 +123,7 @@
                 this.update();
             }
         }
+    
     </script>
+
 </attributes-list>
