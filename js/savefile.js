@@ -35,10 +35,27 @@ function saveAsNimn(){
     askFileName(Object.keys(labellingData).length + ".nimn", function(fileName){
         analytics_reportExportType("nimn");
         report_UniqueCategories();
-        console.log("Saving Data")
-        console.log(labellingData)
+
+        // Workaround for saving "value" field of attributes in "label" field as "nimn" is not saving it
+        var images = Object.keys(labellingData);
+
+        // Picking an image
+        for(var image_i = 0 ; image_i < images.length; image_i++){
+            var imageName = images [image_i];
+
+            // Picking a bounding region
+            for(var shape_i=0; shape_i < labellingData[ imageName ].shapes.length;  shape_i++ ){
+                
+                var shape = labellingData[ imageName ].shapes[ shape_i ];
+
+                // Picking an attribute
+                for(var i=0; i<shape.attributes.length; i++){
+                    shape.attributes[i]['label'] = shape.attributes[i]['label'] + "#" + shape.attributes[i]['value']
+                }
+            }
+        }
+
         download(nimn.stringify(nimnSchema, labellingData), fileName, "application/nimn");
-        console.log(nimn.stringify(nimnSchema, labellingData))
         //download( JSON.stringify(labellingData), fileName, "application/json");
     });
 }
