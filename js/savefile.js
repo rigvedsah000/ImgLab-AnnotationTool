@@ -56,6 +56,26 @@ function saveAsNimn(){
         }
 
         download(nimn.stringify(nimnSchema, labellingData), fileName, "application/nimn");
+
+        // Reversing above workaround
+        for(var image_i = 0 ; image_i < images.length; image_i++){
+            var imageName = images [image_i];
+    
+            // Picking a bounding region
+            for(var shape_i=0; shape_i < labellingData[ imageName ].shapes.length;  shape_i++ ){
+                
+                var shape = labellingData[ imageName ].shapes[ shape_i ];
+    
+                // Picking an attribute
+                for(var i=0; i<shape.attributes.length; i++){
+                    key_value = shape.attributes[i]['label']
+    
+                    shape.attributes[i]['label'] = key_value.split("#")[0]
+                    shape.attributes[i]['value'] = key_value.split("#")[1]
+                }
+            }
+        }
+        
         //download( JSON.stringify(labellingData), fileName, "application/json");
     });
 }
