@@ -33,7 +33,7 @@
 		gtag('config', 'UA-119603824-1');
 	</script>
 
-	<title>ImgLab - Image Annotation tool</title>
+	<title>AI4Bharat - Image Annotation Tool</title>
 
 	<link rel="stylesheet" href="css/style.min.css">
 	<link rel="stylesheet" href="css/slider.1.min.css">
@@ -72,17 +72,17 @@
 			<div class="col-6 col-sm-6 col-md-7 col-xl-7 text-center">
 				<!-- form-inline input-group -->
 				<div class="row justify-content-center align-content-center">
-					<a href="https://github.com/NaturalIntelligence/imglab">
-						<img src="img/imglab_logo.png" height="48px" style="margin-top: 2px">
+					<a href="https://ai4bharat.org/">
+						<img src="img/ai4b.png" height="48px" style="margin-top: 2px">
 					</a>
-					<span style="font-size: 2em; margin-top:5px;">Img Lab</span>
+					<span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 2em; margin-top:5px; margin-left: 16px;"> AI4Bharat</span>
 				</div>
 			</div>
 			<div class="col-3 col-sm-4 col-md-4 col-xl-4">
 				<div class="form-inline flex-row-reverse float-right">
-					<a class="btn btn-info" onclick="javascript:displayDonationPrompt()" style="margin: 0px 10px;">Donate</a>
+					<!--<a class="btn btn-info" onclick="javascript:displayDonationPrompt()" style="margin: 0px 10px;">Donate</a>-->
 					<shortcuts class="d-none d-md-block"></shortcuts>
-					<plugins-menu  class="d-none d-md-block"></plugins-menu>
+					<!--<plugins-menu  class="d-none d-md-block"></plugins-menu>-->
 				</div>
 			</div>
 
@@ -117,7 +117,7 @@
 
 	<cookie-alert></cookie-alert>
 
-	<script src="js/prompt.js"></script>
+	<!-- <script src="js/prompt.js"></script> -->        <!--Opens initial prompt screen for donation-->
 	<script src="js/config.js"></script>
 	<!-- <script src="tags/tags.js"></script> -->
 	<script src="js/thirdparty/riot+compiler.min.js"></script>
@@ -169,8 +169,11 @@
 	<script src="js/app.js"></script>
 	<script src="js/nimnObjStructure.js"></script>
 
+	<!--
 	<script src="dataformaters/coco.js"></script>
 	<script src="dataformaters/pascal_voc.js"></script>
+	-->
+	<script src="dataformaters/text.js"></script> <!-- Imports "textFormatter" object-->
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 

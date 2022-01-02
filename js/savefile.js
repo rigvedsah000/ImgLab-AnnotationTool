@@ -3,8 +3,12 @@ function selectFileTypeToSave(){
         title: 'Save/Export as',
         content: `<div style="text-align:center;">
                 <div>
-                    <button class="btn btn-primary savebtn"  onclick="javascript:saveAsNimn()" id="saveAsNimn">Project file</button>
+                    <button class="btn btn-primary savebtn"  onclick="javascript:saveAsNimn()" id="saveAsNimn">Project File</button>
                 </div>
+                <div>
+                    <button class="btn btn-primary savebtn" onclick="javascript:saveAsCSV()" id="saveAsCSV">Simple CSV</button>
+                </div>
+                <!-- 
                 <div>
                     <button class="btn btn-primary savebtn" onclick="javascript:saveAsDlibXML()" id="saveAsNimn">Dlib XML</button>
                 </div>
@@ -17,6 +21,7 @@ function selectFileTypeToSave(){
                 <div>
                     <button class="btn btn-primary savebtn" onclick="javascript:saveAsPascalVOC()" id="saveAsPascalVOC">Pascal VOC XML</button>
                 </div>
+                -->
             <div>`,
         escapeKey: true,
         backgroundDismiss: true,
@@ -27,7 +32,7 @@ function selectFileTypeToSave(){
  * Save project file in Nimn format
  */
 function saveAsNimn(){
-    askFileName("Untitled_imglab.nimn", function(fileName){
+    askFileName(Object.keys(labellingData).length + ".nimn", function(fileName){
         analytics_reportExportType("nimn");
         report_UniqueCategories();
         download( nimn.stringify(nimnSchema, labellingData), fileName, "application/nimn");
@@ -59,6 +64,17 @@ function report_UniqueCategories(){
     }catch(e){
 
     }
+}
+
+/**
+ * Save project file as csv in txt format
+ */
+ function saveAsCSV(){
+    var textData = textFormater.toTXT(labellingData);
+    // console.log(textData)
+    askFileName(Object.keys(labellingData).length + ".txt", function(fileName){
+        download(textData, fileName, "application/txt", "utf-8");
+    });
 }
 
 /**

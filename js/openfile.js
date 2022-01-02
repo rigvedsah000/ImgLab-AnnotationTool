@@ -1,3 +1,4 @@
+// We do not use this function, we directly call "readDataFile" function below from "menu.tag.html" file
 function openDataFile(){
     $.dialog({
         title: 'Open/Import',
@@ -5,7 +6,7 @@ function openDataFile(){
         So please load the images manually.</p>
         <div style="text-align:center;">
             <label class="btn btn-primary btn-bs-file">Browse
-                <input id="browse" type="file" class="filebutton" accept=".fpp,.nimn,.xml,.json"   />
+                <input id="browse" type="file" class="filebutton" accept=".nimn"   />
             </label>
         <div>`,
         escapeKey: true,
@@ -53,6 +54,7 @@ var loadProjectFile = function(data){
     labellingData = nimn.parse(nimnSchema, data);
     //labellingData =  JSON.parse(data);
 }
+
 var loadDlibXml = function(data){
     var obj = parser.parse(data,{
         ignoreAttributes : false,
@@ -125,4 +127,3 @@ var loadDlibXml = function(data){
     }//End - for each image
 
 }
-
