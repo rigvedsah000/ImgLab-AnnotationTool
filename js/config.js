@@ -91,12 +91,14 @@ var tools = {
             desp : "Create a Boundary boxrectangle",
             icon : "rectangle.svg",
             drawable : true,
+
             create : function(){
                 var rect =  myCanvas.nested().rect().addClass('labelbox shape')/* .draw() */;
                 rect.resize();
                 rect.parent().draggable();
                 return rect;
             },
+            
             validate: function(el){
                 return Number.parseInt(el.attr("width")) > 3;
             },
