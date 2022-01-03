@@ -114,10 +114,10 @@
         }
 
         this.addAttributeRow = function(e){
-            var present = findInArray(opts.attributes, "label", "unlabelled");
+            var present = findInArray(opts.attributes, "label", "key");
             if(!present){
                 opts.attributes.push({
-                    label : "unlabelled",
+                    label : "key",
                     value : ""
                 })
                 this.update();

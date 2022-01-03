@@ -60,6 +60,7 @@ function detachPointByIndex(shapeId, pointIndex){
     featurePoints.splice(pointIndex, 1);
 }
 
+// Default properties for text regions
 /**
  * Scales the shape data based on scale
  * @param {string} id - id of shape
@@ -72,7 +73,7 @@ function detachPointByIndex(shapeId, pointIndex){
 function scaleShape(id, type, bbox, points, scale) {
     return {
         "id" : id,
-        "label" : "unlabelled",
+        "label" : "",
         "type" : type,
         "points": scaleShapePoints(points, scale, type),
         "bbox" : scaleBbox(bbox, scale) || {
