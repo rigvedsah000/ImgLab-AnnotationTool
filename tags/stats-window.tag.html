@@ -1,0 +1,137 @@
+<stats-window>
+    
+    <style>
+        #settings-wrapper {
+            min-height: 500px;
+            overflow-x: hidden;
+            /* min-width: 400px; */
+        }
+
+        .buttonGeneralData {
+            text-align: center;
+        }
+
+        .nav-item>a {
+            color: #aaaaaa;
+        }
+
+        .setting {
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border-style: groove;
+            padding-bottom: 5px;
+            padding-top: 5px;
+            border-width: 0px 0px 1px 0px;
+            border-color: gray;
+        }
+    </style>
+    
+    <div id="settings-wrapper">
+
+        <div class="tab-content" id="settingsTabContent">
+            <div id="data" role="tabpanel" aria-labelledby="data-tab">
+               {computeStats()}
+               <p>Total Images: {getStats()['global_count_stats']['total_images']}</p>
+               <p>Total Regions: {getStats()['global_count_stats']['total_regions']}</p>
+            </br>
+               <p>Bengali Regions: {getStats()['global_script_stats']['bengali']}</p>
+               <p>Devanagari Regions: {getStats()['global_script_stats']['devanagari']}</p>
+               <p>Gujarati Regions: {getStats()['global_script_stats']['gujarati']}</p>
+               <p>Gurumukhi Regions: {getStats()['global_script_stats']['gurumukhi']}</p>
+               <p>Kannada Regions: {getStats()['global_script_stats']['kannada']}</p>
+               <p>Malayalam Regions: {getStats()['global_script_stats']['malayalam']}</p>
+               <p>Oriya Regions: {getStats()['global_script_stats']['oriya']}</p>
+               <p>Tamil Regions: {getStats()['global_script_stats']['tamil']}</p>
+               <p>Telugu Regions: {getStats()['global_script_stats']['telugu']}</p>
+               <p>Urdu Regions: {getStats()['global_script_stats']['urdu']}</p>
+            </br>
+               <p>Regular Regions: {getStats()['global_struct_stats']['regular']}</p>
+               <p>Irregular Regions: {getStats()['global_struct_stats']['irregular']}</p>
+            </div>
+        </div>
+
+    </div>
+    
+    <script>
+        
+        global_count_stats = undefined
+        global_script_stats = undefined
+        global_lang_stats = undefined
+        global_struct_stats = undefined
+
+        this.computeStats = function(){
+
+            // Workaround for saving "value" field of attributes in "label" field as "nimn" is not saving it
+            var images = Object.keys(labellingData);
+
+            count_stats = {
+                "total_images" : images.length,
+                "total_regions" : 0
+            }
+            
+            script_stats = {
+                "bengali" : 0,
+                "devanagari" : 0,
+                "gujarati" : 0,
+                "gurumukhi" : 0,
+                "kannada" : 0,
+                "malayalam" : 0,
+                "oriya" : 0,
+                "tamil" : 0,
+                "telugu" : 0,
+                "urdu" : 0
+            }
+
+            lang_stats = {
+                "bengali" : 0,
+                "devanagari" : 0,
+                "gujarati" : 0,
+                "gurumukhi" : 0,
+                "kannada" : 0,
+                "malayalam" : 0,
+                "oriya" : 0,
+                "tamil" : 0,
+                "telugu" : 0,
+                "urdu" : 0
+            }
+
+            struct_stats = {
+                'regular' : 0,
+                'irregular' : 0
+            }
+
+            // Picking an image
+            for(var image_i = 0 ; image_i < images.length; image_i++){
+                var imageName = images [image_i];
+
+                // Picking a bounding region
+                for(var shape_i=0; shape_i < labellingData[ imageName ].shapes.length;  shape_i++ ){
+
+                    var shape = labellingData[ imageName ].shapes[ shape_i ];
+                    
+                    ++count_stats['total_regions']
+                    ++script_stats[shape.category]
+                    ++lang_stats[findInArray(shape.attributes, 'label', 'language')['value']]
+                    ++struct_stats[findInArray(shape.attributes, 'label', 'structure')['value']]
+                }
+            }
+        
+            global_count_stats = count_stats
+            global_script_stats = script_stats
+            global_lang_stats = lang_stats
+            global_struct_stats = struct_stats
+
+        }
+
+        this.getStats = function(){
+            return {
+                global_count_stats, 
+                global_script_stats,
+                global_lang_stats,
+                global_struct_stats
+            }
+        }
+    
+    </script>
+
+</stats-window>

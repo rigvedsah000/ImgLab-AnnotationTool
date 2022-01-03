@@ -1,4 +1,5 @@
 <menu-dropdown>
+    
     <style>
         .dropdown-content{
             z-index: 4;
@@ -12,23 +13,33 @@
             font-size: 80%;
         }
     </style>
+    
     <div class="dropdown" >
         <div class="dropbtn"><i class="icon-menu" ></i></div>
+        
         <div class="dropdown-content">
+            
             <a href="#" >
                 <label class="btn-bs-file">Open
                     <input id="browse" type="file" class="filebutton" accept=".nimn" onchange={openFile}  />
                 </label>
                 <span>Ctrl + I</span>
             </a>
+            
             <a href="#" id="save" onclick={saveFile}>
               <label>Save</label>
               <span>Ctrl + E</span>
             </a>
+            
             <a href="#" onclick={openSettings}>Settings</a>
+            
+            <a href="#" onclick="{showStats}">Stats</a>
+
         </div>
     </div>
+    
     <script>
+        
         this.openFile = function(e){
             readDataFile(e);
             //openDataFile()
@@ -40,6 +51,10 @@
 
         this.openSettings = function(){
             displaySettingsModal();
+        }
+
+        this.showStats = function(){
+            displayStats()
         }
 
         //Mapping Keyboard keys
@@ -60,4 +75,5 @@
             })
         });
     </script>
+
 </menu-dropdown>
