@@ -182,11 +182,11 @@ var pluginsStore = {
     // }
 }
 
-var suggestedCategories = ["bengali", "devanagari", "gujarati",  "gurumukhi", "kannada", "malayalam", "oriya", "tamil", "telugu", "urdu"];
+var suggestedCategories = ["bengali", "devanagari", "gujarati",  "gurumukhi", "kannada", "latin", "malayalam", "oriya", "tamil", "telugu", "urdu"];
 
 var suggestedTags = [];
 
 var suggestedAttributes = {
     "structure" : ["regular", "irregular"],
-    "language" : ["assamese", "bengali", "bodo", "dogri", "gujarati", "hindi", "kannada", "kashmiri", "konkani", "maithili", "malayalam", "manipuri", "marathi", "nepali", "odia", "punjabi", "sanskrit", "santali", "sindhi", "tamil", "telugu", "urdu"]
+    "language" : ["assamese", "bengali", "bodo", "dogri", "english", "gujarati", "hindi", "kannada", "kashmiri", "konkani", "maithili", "malayalam", "manipuri", "marathi", "nepali", "odia", "punjabi", "sanskrit", "santali", "sindhi", "tamil", "telugu", "urdu"]
 };
